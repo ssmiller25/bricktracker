@@ -12,7 +12,7 @@ import rebrick #rebrickable api
 import requests # request img from web
 import shutil # save img locally
 import eventlet
-from downloadRB import download_and_unzip,get_nil_images
+from downloadRB import download_and_unzip,get_nil_images,get_retired_sets
 from db import initialize_database,get_rows,delete_tables
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -395,7 +395,7 @@ def get_file_creation_dates(file_list):
 @app.route('/config',methods=['POST','GET'])
 def config():
 
-    file_list = ['themes.csv', 'colors.csv', 'sets.csv','static/nil.png','static/nil_mf.jpg']
+    file_list = ['themes.csv', 'colors.csv', 'sets.csv','static/nil.png','static/nil_mf.jpg','retired_sets.csv']
     creation_dates = get_file_creation_dates(file_list)
     
     row_counts = [0]
@@ -417,6 +417,7 @@ def config():
             for i in urls:
                 download_and_unzip("https://cdn.rebrickable.com/media/downloads/"+i+".csv.gz") 
             get_nil_images()
+            get_retired_sets()
             return redirect(url_for('config'))
 
         elif  request.form.get('deletedb') == 'Delete Database':

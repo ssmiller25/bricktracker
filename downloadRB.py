@@ -8,7 +8,8 @@ from urllib.parse import urlparse
 def get_nil_images():
     image_urls = [
         "https://rebrickable.com/static/img/nil_mf.jpg",
-        "https://rebrickable.com/static/img/nil.png"
+        "https://rebrickable.com/static/img/nil.png",
+        "https://docs.google.com/spreadsheets/d/1rlYfEXtNKxUOZt2Mfv0H17DvK7bj6Pe0CuYwq6ay8WA/gviz/tq?tqx=out:csv&sheet=Sorted%20by%20Retirement"
     ]
     static_folder = "static"
     
@@ -27,6 +28,27 @@ def get_nil_images():
 
         # Save the image to the static folder
         with open(output_file, 'wb') as f:
+            f.write(response.content)
+
+        print(f"Downloaded {output_file}")
+
+def get_retired_sets():
+
+    urls = [
+        "https://docs.google.com/spreadsheets/d/1rlYfEXtNKxUOZt2Mfv0H17DvK7bj6Pe0CuYwq6ay8WA/gviz/tq?tqx=out:csv&sheet=Sorted%20by%20Retirement%20Date"
+    ]
+    
+    for url in urls:
+        # Extract the output filename from the URL
+        parsed_url = urlparse(url)
+        output_file = os.path.basename(parsed_url.path)
+
+        # Download the image
+        response = requests.get(url, stream=True)
+        response.raise_for_status()  # Check for any request errors
+
+        # Save the image to the static folder
+        with open('retired_sets.csv', 'wb') as f:
             f.write(response.content)
 
         print(f"Downloaded {output_file}")
