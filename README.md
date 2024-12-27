@@ -78,6 +78,7 @@ services:
       - ./static/parts:/app/static/parts
       - ./static/instructions:/app/static/instructions
       - ./static/sets:/app/static/sets
+      - ./static/minifigs:/app/static/minifigs
       - ./app.db:/app/app.db
 ```
 
