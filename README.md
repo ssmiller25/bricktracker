@@ -56,15 +56,7 @@ mkdir -p static/{sets,instructions,parts,minifigs}
 touch app.db
 ```
 
-2. Create a `.env` file with your configuration:
-```
-REBRICKABLE_API_KEY=your_api_key_here
-DOMAIN_NAME=https://your.domain.com
-```
-
-If using locally, set `DOMAIN_NAME` to `http://localhost:3333`.
-
-3. Create Docker Compose file:
+2. Create Docker Compose file:
 ```bash
 services:
   bricktracker:
@@ -80,9 +72,14 @@ services:
       - ./static/sets:/app/static/sets
       - ./static/minifigs:/app/static/minifigs
       - ./app.db:/app/app.db
+    environment:
+      - REBRICKABLE_API_KEY=your_api_key_here
+      - DOMAIN_NAME=https://your.domain.com
 ```
 
-4. Deploy with Docker Compose:
+If using locally, set `DOMAIN_NAME` to `http://localhost:3333`.
+
+3. Deploy with Docker Compose:
 ```bash
 docker compose up -d
 ```
