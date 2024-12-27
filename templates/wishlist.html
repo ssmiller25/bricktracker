@@ -234,6 +234,7 @@ background-color: white;
         <th class="fixed-width">Name</th>
 	<th style="text-align: center;" class="fixed-width hidden-mobile">Year</th>
 	<th style="text-align: center;" class="fixed-width hidden-mobile">Parts</th>
+	<th class="fixed-width hidden-mobile">Retirement Date</th>
 	<th style="text-align: center;" class="sorttable_nosort">Delete</th>
       </tr>
     </thead>
@@ -245,6 +246,7 @@ background-color: white;
 	  <td>{{ sets[1] }}</td>
 	  <td style="text-align:center;" class="hidden-mobile">{{ sets[2] }}</td>
 	  <td style="text-align:center;" class="hidden-mobile">{{ sets[4] }}</td>
+	  <td class="hidden-mobile">{{ sets[8] }}</td>
 	  <td style="text-align:center;">
             <form method="POST" style="margin:0">
               <input type="hidden" name="set_num" value="{{ sets[0] }}">
