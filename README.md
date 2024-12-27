@@ -46,6 +46,52 @@ docker compose up -d
 
 5. The database is created, csv files are downloaded and you will be redirected to the `/create` page for inputting a set number.
 
+## Setup using pre-build Docker image
+
+1. Setup folders and files:
+```bash
+mkdir BrickTracker
+cd BrickTracker
+mkdir -p static/{sets,instructions,parts,minifigs}
+touch app.db
+```
+
+2. Create a `.env` file with your configuration:
+```
+REBRICKABLE_API_KEY=your_api_key_here
+DOMAIN_NAME=https://your.domain.com
+```
+
+If using locally, set `DOMAIN_NAME` to `http://localhost:3333`.
+
+3. Create Docker Compose file:
+```bash
+services:
+  bricktracker:
+    container_name: BrickTracker
+    restart: unless-stopped
+    image: gitea.baerentsen.space/frederikbaerentsen/bricktracker:latest
+    ports:
+      - "3333:3333"
+    volumes:
+      - ./.env:/app/.env
+      - ./static/parts:/app/static/parts
+      - ./static/instructions:/app/static/instructions
+      - ./static/sets:/app/static/sets
+      - ./app.db:/app/app.db
+```
+
+4. Deploy with Docker Compose:
+```bash
+docker compose up -d
+```
+
+4. Access the web interface at `http://localhost:3333`
+
+5. The database is created, csv files are downloaded and you will be redirected to the `/create` page for inputting a set number.
+
+6. csv files are downloaded inside the container. If you delete the container, go to `/config` and redownload them again. 
+
 ## Usage
 
 ### Adding Sets
