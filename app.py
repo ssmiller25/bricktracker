@@ -547,24 +547,27 @@ def wishlist():
             cursor.close()
             conn.close()
 
-    retired_sets_dict = {}
-
-    with open('retired_sets.csv', mode='r', encoding='utf-8') as csvfile:
-        reader = csv.reader(csvfile)
-        header = next(reader)
-        for row in reader:
-            key = row[2]
-            retired_sets_dict[key] = row
-
     conn = sqlite3.connect('app.db')
     cursor = conn.cursor()
     cursor.execute('SELECT * from wishlist;')
     
     results = cursor.fetchall()
     wishlist = [list(i) for i in results]
-    for w in wishlist:
-        set_num = w[0].split('-')[0]
-        w.append(retired_sets_dict.get(set_num,[""]*7)[6])
+    retired_sets_dict = {}
+    
+    try:
+        with open('retired_sets.csv', mode='r', encoding='utf-8') as csvfile:
+            reader = csv.reader(csvfile)
+            header = next(reader)
+            for row in reader:
+                key = row[2]
+                retired_sets_dict[key] = row
+        for w in wishlist:
+            set_num = w[0].split('-')[0]
+            w.append(retired_sets_dict.get(set_num,[""]*7)[6])
+    except:
+        print('No retired list')
+
     if wishlist == None or wishlist == '':
         wishlist = ''
     conn.commit()
