@@ -58,10 +58,10 @@
   </table>
 </div>
 
-<div style="margin: 2rem 0; padding: 2rem; border-bottom: 2px solid #eee;"></div>
+<div id="minifigs" style="margin: 2rem 0; padding: 2rem; border-bottom: 2px solid #eee;"></div>
 
 {% if minifig_list | length > 0 %}
-<h1 id="minifigs" class="title is-2 ">Minifigs</h1>
+<h1 class="title is-2 ">Minifigs</h1>
 {% for fig in minifig_list %}
 <h2 class="subtitle is-4 mt-4 ">{{ fig[2] }} ({{ fig[0] }})</h2>
 
