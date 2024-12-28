@@ -15,6 +15,7 @@ import eventlet
 from downloadRB import download_and_unzip,get_nil_images,get_retired_sets
 from db import initialize_database,get_rows,delete_tables
 from werkzeug.middleware.proxy_fix import ProxyFix
+from werkzeug.utils import secure_filename
 
 
 app = Flask(__name__)
@@ -29,6 +30,9 @@ else:
 
 DIRECTORY = os.path.join(os.getcwd(), 'static', 'instructions')
 
+UPLOAD_FOLDER = DIRECTORY
+ALLOWED_EXTENSIONS = {'pdf'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/favicon.ico')
 
@@ -79,6 +83,37 @@ def hyphen_split(a):
     if a.count("-") == 1:
         return a.split("-")[0]
     return "-".join(a.split("-", 2)[:2])
+
+def allowed_file(filename):
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/upload',methods=['GET','POST'])
+def uploadInst():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect('/')
+    return '''
+        <!doctype html>
+        <title>Upload new File</title>
+        <h1>Upload new File</h1>
+        <form method=post enctype=multipart/form-data>
+          <input type=file name=file>
+          <input type=submit value=Upload>
+        </form>
+        '''
 
 @app.route('/delete/<tmp>',methods=['POST', 'GET'])
 def delete(tmp):
