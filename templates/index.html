@@ -12,6 +12,11 @@
 
       <style>
 
+.my-input::placeholder {
+        color: var(--bulma-grey-dark);
+    }
+
+
 @media only screen and (max-width: 480px) {
 /* horizontal scrollbar for tables if mobile screen */
 .hidden-mobile {
@@ -201,7 +206,7 @@ display: none !important;
 	</nav>
 
     <div class="search-container">
-      <input class="input"type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search title or set number...">
+      <input class="input my-input" type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search title, set number, theme or parts...">
       <!-- <center hidden="true">
 	<button class="button button-outline" onclick="dynamicSort('set_id')">Sort by ID</button>
 	<button class="button button-outline" onclick="dynamicSort('set_year')">Sort by Year</button>
