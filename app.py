@@ -107,8 +107,20 @@ def uploadInst():
             return redirect('/')
     return '''
         <!doctype html>
-        <title>Upload new File</title>
-        <h1>Upload new File</h1>
+        <title>Upload instructions</title>
+        <h1>Upload instructions</h1>
+        <p>Files must be named like:</p>
+        <code>&lt;set number&gt;-&lt;version&gt;-&lt;part&gt;.pdf</code>
+        <ul>
+          <li><code>7595-1.pdf</code> for set 7595</li>
+          <li><code>71039-2.pdf</code> for Moon Knight in <code>Collectible Minifigures: Marvel Series 2</code></li>
+          <li><code>71039-13.pdf</code> for the whole set <code>Collectible Minifigures: Marvel Series 2</code></li>
+          <li><code>10294-1-1.pdf</code> for the 1st pdf in the 10294 set
+          <li><code>10294-1-2.pdf</code> for the 2nd pdf in the 10294 set
+          <li><code>10294-1-3.pdf</code> for the 3rd pdf in the 10294 set
+          <li><code>10937-1-0.pdf</code> for the comic that comes with set 10937.
+          <li><code>10937-1-1.pdf</code> for the 1st pdf in the 10937 set
+        </ul>   
         <form method=post enctype=multipart/form-data>
           <input type=file name=file>
           <input type=submit value=Upload>
