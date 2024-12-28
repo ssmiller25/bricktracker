@@ -14,6 +14,12 @@
 
 <style>
 
+
+.title-image {
+            object-fit: cover;
+            width: 100%;
+            height: 200px;
+        }
 table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
     content: " \25B4\25BE"
 }
@@ -27,6 +33,7 @@ table.sortable tbody tr:nth-child(2n+1) td {
 .hidden { 
 	display: none;
 }
+
 
 table { 
     width: 100%; /* Ensure the table takes full width of its container */
@@ -246,8 +253,8 @@ background-color: white;
 
     <div class="container">
       <center>
-        <h1 class="title">{{ tmp }} - {{ title }}</h1>
-      <img class="lightbox-trigger" id="cover" style='height: 150px; width: auto; object-fit: contain'  src="/static/sets/{{ tmp }}.jpg" alt="{{ tmp }} - {{ title }}">
+        <h1 class="title is-2 mt-4">{{ tmp }} - {{ title }}</h1>
+      <img class="lightbox-trigger title-image mb-5" id="cover" style='height: 150px; width: auto; object-fit: contain'  src="/static/sets/{{ tmp }}.jpg" alt="{{ tmp }} - {{ title }}">
       {% block content %}{% endblock %}
     </div>
     {% block scripts %}{% endblock %}

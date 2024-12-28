@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
- <div style="overflow-x:auto;">
+ <div style="overflow-x:auto;border-radius: 10px;border: 1px #ccc solid;  box-shadow:0 0.5em 1em -0.125em hsla(221deg,14%,4%,0.1),0 0px 0 1px hsla(221deg,14%,4%,0.02);" >
 <table id="data" class="table tablemobile sortable">
     <thead>
       <tr>
         <th class="sorttable_nosort" style="width:65px;">Image</th>
         <th class="hidden-mobile name-class">Name</th>
         <th class="hidden-mobile">Color</th>
-        <th >Qty</th>
+        <th style="text-align:center">Qty</th>
         <th class="sorttable_nosort" style="text-align:center;">Missing</th>
       </tr>
     </thead>
@@ -58,11 +58,12 @@
   </table>
 </div>
 
-{% if minifig_list | length > 0 %}
+<div style="margin: 2rem 0; padding: 2rem; border-bottom: 2px solid #eee;"></div>
 
-<h1 id="minifigs" class="title">Minifigs</h1>
+{% if minifig_list | length > 0 %}
+<h1 id="minifigs" class="title is-2 ">Minifigs</h1>
 {% for fig in minifig_list %}
-<h2 class="subtitle">{{ fig[2] }} ({{ fig[0] }})</h2>
+<h2 class="subtitle is-4 mt-4 ">{{ fig[2] }} ({{ fig[0] }})</h2>
 
 <div style="display: flex; justify-content: center;">
   <div style="display: flex; align-items: center;">
@@ -75,15 +76,15 @@
   </div>
 </div>
 
-<div class="center-table" >
-  <table id="data" class="table">
+  <div class="center-table" style="overflow-x:auto;border-radius: 10px;border: 1px #ccc solid;  box-shadow:0 0.5em 1em -0.125em hsla(221deg,14%,4%,0.1),0 0px 0 1px hsla(221deg,14%,4%,0.02);" >
+  <table id="data" class="table tablemobile sortable">
       <thead>
         <tr>
-          <th class="fixed-width"></th>
+          <th class="fixed-width sorttable_nosort"></th>
           <th style="text-align:left;margin:0px;" class="fixed-width hidden-mobile name-class">Name</th>
           <th class="fixed-width hidden-mobile">Color</th>
           <th class="fixed-width" style="text-align: center;">Qty</th>
-          <th class="fixed-width" style="text-align: center;">Missing</th>
+          <th class="fixed-width sorttable_nosort" style="text-align: center;">Missing</th>
         </tr>
       </thead>
       <tbody>
