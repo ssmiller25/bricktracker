@@ -39,6 +39,11 @@ DOMAIN_NAME=https://your.domain.com
 
 If using locally, set `DOMAIN_NAME` to `http://localhost:3333`.
 
+```
+LINKS=True
+```
+Can be added to the `.env` file in order for set numbers to be links to Rebrickable on the front page. 
+
 3. Deploy with Docker Compose:
 ```bash
 docker compose up -d
@@ -77,6 +82,7 @@ services:
     environment:
       - REBRICKABLE_API_KEY=your_api_key_here
       - DOMAIN_NAME=https://your.domain.com
+      - LINKS=True #optional, enables set numbers to be Rebrickable links on the front page.
 ```
 
 If using locally, set `DOMAIN_NAME` to `http://localhost:3333`.
