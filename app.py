@@ -663,7 +663,8 @@ def index():
 
         results = cursor.fetchall()
         set_list = [list(i) for i in results]
-
+        if os.getenv("RANDOM") == True:
+            random.shuffle(set_list)
         cursor.execute('SELECT DISTINCT u_id from missing;')
         results = cursor.fetchall()
         missing_list = [list(i)[0] for i in results]

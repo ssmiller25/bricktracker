@@ -35,14 +35,15 @@ mkdir static/{sets,instructions,parts,minifigs}
 ```
 REBRICKABLE_API_KEY=your_api_key_here
 DOMAIN_NAME=https://your.domain.com
-```
-
-If using locally, set `DOMAIN_NAME` to `http://localhost:3333`.
-
-```
 LINKS=True
+RANDOM=True
 ```
-Can be added to the `.env` file in order for set numbers to be links to Rebrickable on the front page. 
+
+- If using locally, set `DOMAIN_NAME` to `http://localhost:3333`.
+
+- `LINKS`: Set to `True` in order for set numbers to be links to Rebrickable on the front page. 
+
+- `RANDOM`: Set to `True` in order for the sets to shuffle on the frontpage each load.
 
 3. Deploy with Docker Compose:
 ```bash
@@ -82,7 +83,8 @@ services:
     environment:
       - REBRICKABLE_API_KEY=your_api_key_here
       - DOMAIN_NAME=https://your.domain.com
-      - LINKS=True #optional, enables set numbers to be Rebrickable links on the front page.
+      - LINKS=True #optional, enables set numbers to be Rebrickable links on the front page
+      - RANDOM=False #optional, set to True if you want your front page to be shuffled on load
 ```
 
 If using locally, set `DOMAIN_NAME` to `http://localhost:3333`.
