@@ -329,7 +329,7 @@ display: none !important;
 				<!-- <a class="js-modal-trigger is-size-6" style="color: #363636;"  data-id="{{ i[0] }}" data-target="modal-inst">Inst.</a> -->
 				    {% for x in files %}
 				    {% if x.startswith(i[0]) %}
-					 <a href="/files/{{ x }}" class="dropdown-item">{{ x }}</a>
+					 <a href="/files/{{ x }}" target="_blank" class="dropdown-item">{{ x }}</a>
 					      {% endif %}
 				    {% endfor %}
 
