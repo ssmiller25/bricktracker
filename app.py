@@ -515,7 +515,7 @@ def missing():
 def parts():
     conn = sqlite3.connect('app.db')
     cursor = conn.cursor()
-    cursor.execute('SELECT id, part_num, color_id, color_name, element_id, part_img_url_id, SUM(quantity) AS total_quantity, name FROM inventory GROUP BY id, part_num, part_img_url_id, color_id, color_name, element_id, name;') 
+    cursor.execute('SELECT id, part_num, color_id, color_name, element_id, part_img_url_id, SUM(quantity) AS total_quantity, name FROM inventory GROUP BY part_num, part_img_url_id, color_id, color_name, element_id, name;') 
 
     results = cursor.fetchall()
     missing_list = [list(i) for i in results]
