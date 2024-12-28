@@ -122,6 +122,8 @@ Instructions can be added to the `static/instructions` folder. Instructions **mu
 
 Instructions are not automatically downloaded!
 
+Instructions can be uploaded from the webinterface (desktop-only) using the `Upload` button in the navbar. 
+
 ## Docker Configuration
 
 The application uses two main configuration files:
