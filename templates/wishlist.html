@@ -242,7 +242,7 @@ background-color: white;
       {% for sets in wishlist %}
         <tr>
 	  <td><img src="{{ '/static/sets/' + sets[0] + '.jpg' }}" class="lightbox-trigger" style="height: 50px; width: auto;"></td>
-	  <td  style="text-align:center;margin:0px;">{{ sets[0] }}</td>
+	  <td  style="text-align:center;margin:0px;" ><a class="has-text-dark" href="https://www.bricklink.com/v2/catalog/catalogitem.page?S={{ sets[0] }}" target="_blank">{{ sets[0] }}</a></td>
 	  <td>{{ sets[1] }}</td>
 	  <td style="text-align:center;" class="hidden-mobile">{{ sets[2] }}</td>
 	  <td style="text-align:center;" class="hidden-mobile">{{ sets[4] }}</td>

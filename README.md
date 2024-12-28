@@ -217,8 +217,12 @@ Sets are added from rebrickable using your own API key. Set numbers are checked 
 
 ### Wishlist
 
-![](https://xbackbone.baerentsen.space/LaMU8/hACAbArO44.png/raw)
+![](https://xbackbone.baerentsen.space/LaMU8/qUYeHAKU93.png/raw)
 
 Sets are added from rebrickable and again checked against sets.csv. If you can't add a brand new set, consider updating your data from the [`/config` page](https://xbackbone.baerentsen.space/LaMU8/lErImaCE12.png/raw). Press the delete button to remove a set. Known Issue: If multiple sets of the same number is added, they will all be deleted.
+
+Wishlist uses *unofficial* retirement data. 
+
+Each set number, links to bricklink for pricecheck. 
 
 
