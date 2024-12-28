@@ -23,6 +23,11 @@ app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_port=1, x_
 socketio = SocketIO(app,cors_allowed_origins=os.getenv("DOMAIN_NAME"))
 count = 0
 
+if os.getenv("RANDOM") == 'True':
+    RANDOM = True
+else:
+    RANDOM = False
+
 if os.getenv("LINKS"):
     LINKS = os.getenv("LINKS")
 else:
@@ -663,7 +668,7 @@ def index():
 
         results = cursor.fetchall()
         set_list = [list(i) for i in results]
-        if os.getenv("RANDOM") == True:
+        if RANDOM:
             random.shuffle(set_list)
         cursor.execute('SELECT DISTINCT u_id from missing;')
         results = cursor.fetchall()
