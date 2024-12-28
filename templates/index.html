@@ -159,6 +159,9 @@ display: none !important;
 						<a class="navbar-item" id="toggleButton4">
 							Sets with missing pieces
 						</a>
+						<a class="navbar-item" id="toggleButton5">
+							Missing instructions
+						</a>
 					</div>
 				</div>
 				<div class="navbar-item has-dropdown is-hoverable">
@@ -320,7 +323,7 @@ display: none !important;
 			  <div class="dropdown-trigger">
 			    <button class="is-size-6" aria-haspopup="true" aria-controls="dropdown-menu3">
 		  <span>
-			  <a class="is-size-6" style="color: #363636;">Inst.</a>
+			  <a id="inst-link" class="is-size-6" style="color: #363636;">Inst.</a>
 		  </span>
 			    </button>
 			  </div>
@@ -711,6 +714,36 @@ display: none !important;
 	    }
 	  });
 
+	  document.addEventListener('DOMContentLoaded', function () {
+	    const toggleButton = document.getElementById('toggleButton5');
+	    let isHidden = true; // Initially, only show checked grid items
+
+	    // Initialize visibility based on isHidden
+	    updateVisibility();
+
+	    toggleButton.addEventListener('click', function() {
+	      // Toggle visibility and update grid items
+	      isHidden = !isHidden;
+	      updateVisibility();
+	    });
+
+	    function updateVisibility() {
+	      // Get all grid items
+	      const gridItems = document.querySelectorAll('.grid-item');
+
+	      // Iterate over each grid item
+	      gridItems.forEach(function(item) {
+		      const hasInst = item.querySelector('#inst-link');
+		if (isHidden || !hasInst ) {
+		  // Show the grid item if it's hidden or the checkbox is checked
+		  item.style.display = 'block';
+		} else {
+		  // Hide the grid item if the checkbox is not checked
+		  item.style.display = 'none';
+		}
+	      });
+	    }
+	  });
 
 	  function customSort(a, b) {
     // Function to remove leading articles
