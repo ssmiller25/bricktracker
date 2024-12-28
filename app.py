@@ -22,6 +22,11 @@ app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_port=1, x_
 socketio = SocketIO(app,cors_allowed_origins=os.getenv("DOMAIN_NAME"))
 count = 0
 
+if os.getenv("LINKS"):
+    LINKS = os.getenv("LINKS")
+else:
+    LINKS = False
+
 DIRECTORY = os.path.join(os.getcwd(), 'static', 'instructions')
 
 
@@ -635,7 +640,7 @@ def index():
         #files = [re.match(r'^([\w]+-[\w]+)', f).group() for f in os.listdir(DIRECTORY) if f.endswith('.pdf')]
         print(files.sort())
 
-        return render_template('index.html',set_list=set_list,themes_list=theme_file,missing_list=missing_list,files=files,minifigs=minifigs)
+        return render_template('index.html',set_list=set_list,themes_list=theme_file,missing_list=missing_list,files=files,minifigs=minifigs,links=LINKS)
     
     if request.method == 'post':
         set_num = request.form.get('set_num')

@@ -197,7 +197,6 @@ display: none !important;
 		</div>
 	</nav>
 
-	
     <div class="search-container">
       <input class="input"type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search title or set number...">
       <!-- <center hidden="true">
@@ -218,14 +217,17 @@ display: none !important;
       <!-- Add more buttons for other text values if needed -->
     </div>
     <div class="grid-container" id="gridContainer">
-
       {% for i in set_list %}
       <div class="grid-item">
 	      <div class="card">
 	      <div class="columns" style="">
 		<div class="column is-full" style="text-align: left;">
 		  <p class="is-size-5 searchTitle">
-		    <span style="font-weight: bold;" class="set_id">{{ i[0] }}</span> <span style="font-weight: bold;" class="set_name">{{ i[1] }}</span><br>
+		  	{% if links == 'True' %}
+			  <a style="font-weight: bold;" href="https://rebrickable.com/sets/{{ i[0] }}" target="_blank" class="has-text-dark set_id">{{ i[0] }}</a> <span style="font-weight: bold;" class="has-text-dark set_name">{{ i[1] }}</span><br>
+			  {% else %}
+			  <span style="font-weight: bold;" class="has-text-dark set_id">{{ i[0] }}</span> <span style="font-weight: bold;" class="has-text-dark set_name">{{ i[1] }}</span><br>
+			  {% endif %}
 			<a class="is-size-7 set_theme" style="color: #363636;">{{ i[3] }}</a> <a class="is-size-7" style="color: #363636;"> (<span class='set_year'>{{ i[2] }}</span>)</a>
 			<span></span>
 			<a class="is-size-5" style="color: #363636;float:right;"><b>Parts:</b> {{ i[4] }}</a>
@@ -342,9 +344,6 @@ display: none !important;
 			  <a class="is-size-6" style="color: #363636;" href="/{{ i[0] }}/{{ i[11] }}">Inv.</a>
 		  </span>
 		  </p>
-
-
-
 		</footer>
 	      </div>
 	  </div>
