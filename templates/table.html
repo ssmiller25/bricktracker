@@ -9,7 +9,7 @@
         <th class="hidden-mobile name-class">Name</th>
         <th class="hidden-mobile">Color</th>
         <th style="text-align:center">Qty</th>
-        <th class="sorttable_nosort" style="text-align:center;">Missing</th>
+        <th class="sorttable_nosort" style="text-align:right;">Missing</th>
       </tr>
     </thead>
     <tbody>
@@ -84,7 +84,7 @@
           <th style="text-align:left;margin:0px;" class="fixed-width hidden-mobile name-class">Name</th>
           <th class="fixed-width hidden-mobile">Color</th>
           <th class="fixed-width" style="text-align: center;">Qty</th>
-          <th class="fixed-width sorttable_nosort" style="text-align: center;">Missing</th>
+          <th class="fixed-width sorttable_nosort" style="text-align: right;">Missing</th>
         </tr>
       </thead>
       <tbody>
@@ -102,7 +102,7 @@
             <td style="text-align:left;margin:0px;" class="hidden-mobile name-class">{{ part[3] }}</td>
             <td class="hidden-mobile">{{ part[7] }}</td>
             <td style="text-align: center;">{{ part[8] * fig[3] }}</td>
-            <td class="centered-cell">
+            <td class="centered-cell" style="text-align:right;">
               <div class="inputContainer">
                 {% set ns = namespace(count='') %}
                 <form id="number-form">
