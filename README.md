@@ -4,6 +4,8 @@ A web application for organizing and tracking LEGO sets, parts, and minifigures.
 
 > **Screenshots at the end of the readme!**
 
+<a href="https://www.buymeacoffee.com/frederikb" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
 ## Features
 
 - Track multiple LEGO sets with their parts and minifigures
@@ -212,3 +214,5 @@ Sets are added from rebrickable using your own API key. Set numbers are checked 
 ![](https://xbackbone.baerentsen.space/LaMU8/hACAbArO44.png/raw)
 
 Sets are added from rebrickable and again checked against sets.csv. If you can't add a brand new set, consider updating your data from the [`/config` page](https://xbackbone.baerentsen.space/LaMU8/lErImaCE12.png/raw). Press the delete button to remove a set. Known Issue: If multiple sets of the same number is added, they will all be deleted.
+
+
