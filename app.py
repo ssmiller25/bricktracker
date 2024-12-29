@@ -493,7 +493,9 @@ def config():
 def missing():
     conn = sqlite3.connect('app.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT part_num,  color_id, element_id, part_img_url_id, SUM(quantity) AS total_quantity, GROUP_CONCAT(set_num, ', ') AS set_number FROM missing GROUP BY part_num, color_id, element_id;") 
+    #cursor.execute("SELECT part_num,  color_id, element_id, part_img_url_id, SUM(quantity) AS total_quantity, GROUP_CONCAT(set_num, ', ') AS set_number FROM missing GROUP BY part_num, color_id, element_id;") 
+
+    cursor.execute("SELECT part_num, color_id, element_id, part_img_url_id, SUM(quantity) AS total_quantity, GROUP_CONCAT(set_num || ',' || u_id, ',') AS set_number FROM missing GROUP BY part_num, color_id, element_id, part_img_url_id ORDER BY part_num;")
 
     results = cursor.fetchall()
     missing_list = [list(i) for i in results]

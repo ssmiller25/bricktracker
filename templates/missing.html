@@ -25,6 +25,17 @@ table.sortable tbody tr:nth-child(2n+1) td {
   background: #ecf0f1;
 }
 
+	table {
+    width: 100%; /* Ensure the table takes full width of its container */
+
+}
+
+td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
+
 
 @media only screen and (max-width: 480px) {
     /* horizontal scrollbar for tables if mobile screen */
@@ -73,6 +84,9 @@ table.sortable tbody tr:nth-child(2n+1) td {
   text-overflow: ellipsis;
 }
 
+.fixed-width {
+	max-width:100px;
+}
 
 
     /* Modal Styles */
@@ -164,38 +178,46 @@ table.sortable tbody tr:nth-child(2n+1) td {
 			</div>
 		</div>
 	</nav>
+	    <div class="container">
 	<center>
-	<div class="center-table" >
-		<table id="data" class="table sortable tablemobile">
+        <h1 class="title is-2 mt-4">Missing Pieces</h1>
+		<div style="overflow-x:auto;border-radius: 10px;border: 1px #ccc solid;  box-shadow:0 0.5em 1em -0.125em hsla(221deg,14%,4%,0.1),0 0px 0 1px hsla(221deg,14%,4%,0.02);" >
+		<table id="data"  class="table sortable tablemobile">
 			<thead>
 			  <tr>
-				<th class="sorttable_nosort"></th>
-				<th >Part Num</th>
-				<th >Color</th>
-				<th >Element ID</th>
-				<th >Qty</th>
-				<th class="sorttable_nosort">Sets</th>
+				<th style="width:65px;" class="fixed-width sorttable_nosort"></th>
+				<th class="fixed-width" >Part Num</th>
+				<th class="fixed-width" >Color</th>
+				<th class="fixed-width" >Element ID</th>
+				<th class="fixed-width" >Qty</th>
+				<th class="fixed-width sorttable_nosort">Sets</th>
 			  </tr>
 			</thead>
 			<tbody>
 			  {% for brick in missing_list %}
 				<tr>
 					{% if brick[4] == 'nil' %}
-					<td><img src="{{ '/static/none.jpg' }}" class="lightbox-trigger" alt="{{ brick[3] }}" style="height: 50px; width: 50px;margin:0;padding: 0;" loading="lazy"></td>
+					<td style="background-color: #ffffff;"><img src="{{ '/static/none.jpg' }}" class="lightbox-trigger" alt="{{ brick[3] }}" style="height: 50px; width: 50px;margin:0;padding: 0;" loading="lazy"></td>
 					{% else %}
-					<td><img src="{{ '/static/parts/' + brick[3] + '.jpg' }}" alt="{{ brick[3] }}" class="lightbox-trigger" style="height: 50px; width: 50px;margin:0;padding: 0;" loading="lazy"></td>
+					<td style="background-color: #ffffff;"><img src="{{ '/static/parts/' + brick[3] + '.jpg' }}" alt="{{ brick[3] }}" class="lightbox-trigger" style="height: 50px; width: 50px;margin:0;padding: 0;" loading="lazy"></td>
 					{% endif %}
 				  <td><a target="_blank" href="https://www.bricklink.com/v2/catalog/catalogitem.page?P={{ brick[0] }}">{{ brick[0] }}</a></td>
 				  <td>{{ brick[1] }}</td>
 				  <td><a target="_blank" href="https://www.rebrickable.com/elements/{{ brick[2] }}">{{ brick[2] }}</a></td>
 				  <td>{{ brick[4] }}</td>
-				  <td>{{ brick[5] }}</td>			 
+				  <td>
+					{% set set_numbers = brick[5].split(',') %}
+					{% for i in range(0, set_numbers|length, 2) %}
+						<a href="{{ set_numbers[i] }}/{{ set_numbers[i+1] }}">{{ set_numbers[i] }}</a>{% if i != set_numbers|length - 2 %},{% endif %}
+					{% endfor %}
+				  </td>			 
 				</tr>
 			  {% endfor %}
 			</tbody>
 		  </table>
 		</div>
 	</center>
+	    </div>
 
 
 <div id="lightbox-modal">
