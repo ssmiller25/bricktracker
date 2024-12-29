@@ -24,6 +24,14 @@ table.sortable tbody tr:nth-child(2n+1) td {
   background: #ecf0f1;
 }
 
+.name-class {
+  max-width: 300px; 
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
 @media only screen and (max-width: 480px) {
     /* horizontal scrollbar for tables if mobile screen */
 	img {
@@ -166,15 +174,18 @@ table.sortable tbody tr:nth-child(2n+1) td {
 			</div>
 		</div>
 	</nav>
+	<div class="container">
 	<center>
+		        <h1 class="title is-2 mt-4">Parts</h1>
 	<div class="center-table" >
+		 <div style="overflow-x:auto;border-radius: 10px;border: 1px #ccc solid;  box-shadow:0 0.5em 1em -0.125em hsla(221deg,14%,4%,0.1),0 0px 0 1px hsla(221deg,14%,4%,0.02);" >
 		<table id="data" class="table tablemobile sortable">
 			<thead>
 			  <tr>
-				<th class="sorttable_nosort"></th>
+				<th style="width:65px;" class="sorttable_nosort"></th>
 				<th >Part Num</th>
 				<th >Color</th>
-				<th class="name-class" >Name</th>
+				<th class="name-class">Name</th>
 				<th >element_id</th>
 				<th >total_quantity</th>
 			  </tr>
@@ -196,8 +207,10 @@ table.sortable tbody tr:nth-child(2n+1) td {
 			  {% endfor %}
 			</tbody>
 		  </table>
+		 </div>
 		</div>
 	</center>
+	</div>
 <div id="lightbox-modal">
   <div class="lightbox-wrapper">
     <span class="close">&times;</span>
