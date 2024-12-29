@@ -208,7 +208,6 @@ display: none !important;
 			</div>
 		</div>
 	</nav>
-
     <div class="search-container">
       <input class="input my-input" type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search title, set number, theme or parts...">
       <!-- <center hidden="true">
@@ -324,7 +323,6 @@ display: none !important;
 		  </p>
 
 			{% set ns = namespace(found=false) %}
-
 		    {% for file in files %}
 			{% if ns.found is sameas false and file.startswith(i[0]) %}
 

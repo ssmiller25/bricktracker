@@ -493,7 +493,7 @@ def config():
 def missing():
     conn = sqlite3.connect('app.db')
     cursor = conn.cursor()
-    cursor.execute('SELECT part_num, color_id, element_id, part_img_url_id, SUM(quantity) AS total_quantity FROM missing GROUP BY part_num, color_id, element_id;') 
+    cursor.execute("SELECT part_num,  color_id, element_id, part_img_url_id, SUM(quantity) AS total_quantity, GROUP_CONCAT(set_num, ', ') AS set_number FROM missing GROUP BY part_num, color_id, element_id;") 
 
     results = cursor.fetchall()
     missing_list = [list(i) for i in results]
@@ -691,7 +691,7 @@ def index():
 
         files = [f for f in os.listdir(DIRECTORY) if f.endswith('.pdf')]
         #files = [re.match(r'^([\w]+-[\w]+)', f).group() for f in os.listdir(DIRECTORY) if f.endswith('.pdf')]
-        print(files.sort())
+        files.sort()
 
         return render_template('index.html',set_list=set_list,themes_list=theme_file,missing_list=missing_list,files=files,minifigs=minifigs,links=LINKS)
     
