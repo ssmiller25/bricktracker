@@ -1,10 +1,17 @@
-# BrickTracker
+# BrickTracker Mirror
 
 A web application for organizing and tracking LEGO sets, parts, and minifigures. Uses the Rebrickable API to fetch LEGO data and allows users to track missing pieces and collection status.
 
 > **Screenshots at the end of the readme!**
 
 <a href="https://www.buymeacoffee.com/frederikb" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
+
+## Mirror
+
+Original Source in on [FrederikBaerentsen Gitea Instance](https://gitea.baerentsen.space/FrederikBaerentsen/BrickTracker) as is replicated in full [in the upstream branch of this repo](https://github.com/ssmiller25/bricktracker/tree/upstream)
+
+[Reddit post announcing project](https://www.reddit.com/r/selfhosted/comments/1hmx314/bricktracker_a_selfhosted_web_app_for_tracking/)
 
 ## Features
 
