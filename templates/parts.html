@@ -31,6 +31,10 @@ table.sortable tbody tr:nth-child(2n+1) td {
   text-overflow: ellipsis;
 }
 
+.search-container {
+    padding: 10px;
+}
+
 
 @media only screen and (max-width: 480px) {
     /* horizontal scrollbar for tables if mobile screen */
@@ -177,9 +181,12 @@ table.sortable tbody tr:nth-child(2n+1) td {
 	<div class="container">
 	<center>
 		        <h1 class="title is-2 mt-4">Parts</h1>
+			<div class="search-container">
+			      <input class="input my-input" type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search number, color, name or element id...">
+			</div>
 	<div class="center-table" >
 		 <div style="overflow-x:auto;border-radius: 10px;border: 1px #ccc solid;  box-shadow:0 0.5em 1em -0.125em hsla(221deg,14%,4%,0.1),0 0px 0 1px hsla(221deg,14%,4%,0.02);" >
-		<table id="data" class="table tablemobile sortable">
+		<table id="data" class="table tablemobile sortable" style="widht:100%;height:100%;table-layout: fixed;">
 			<thead>
 			  <tr>
 				<th style="width:65px;" class="sorttable_nosort"></th>
@@ -261,6 +268,37 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+
+function searchFunction() {
+    // Get input element and filter value
+    var input = document.getElementById('searchInput');
+    var filter = input.value.toUpperCase();
+    
+    // Get the table and its rows
+    var table = document.getElementById('data');
+    var rows = table.getElementsByTagName('tr');
+    
+    // Loop through all rows (skip the header row)
+    for (var i = 1; i < rows.length; i++) {
+        var cells = rows[i].getElementsByTagName('td');
+        var rowMatches = false;
+
+        // Loop through each cell in the row
+        for (var j = 0; j < cells.length; j++) {
+            var cellContent = cells[j].textContent || cells[j].innerText;
+            if (cellContent.toUpperCase().indexOf(filter) > -1) {
+                rowMatches = true;
+                break;
+            }
+        }
+
+        // Show or hide the row based on the match
+        rows[i].style.display = rowMatches ? '' : 'none';
+    }
+}
+
+
 
 	</script>
   </body>
