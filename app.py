@@ -695,7 +695,7 @@ def index():
 
         return render_template('index.html',set_list=set_list,themes_list=theme_file,missing_list=missing_list,files=files,minifigs=minifigs,links=LINKS)
     
-    if request.method == 'post':
+    if request.method == 'POST':
         set_num = request.form.get('set_num')
         u_id = request.form.get('u_id')
         minif = request.form.get('minif')
